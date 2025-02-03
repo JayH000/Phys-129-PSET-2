@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 from scipy.spatial import ConvexHull, Delaunay
 
 # Load the data from mesh.dat
-filename = "mesh(1).dat"
-points = np.loadtxt(filename)  # Assumes the file contains 2D points in columns
+filename = "/Users/domholguin/Documents/mesh (1).dat"
+points = np.loadtxt(filename, skiprows=1)  
 
 # Compute the convex hull
 hull = ConvexHull(points)
