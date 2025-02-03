@@ -83,14 +83,67 @@ def plot_sphere_with_frames(num_points=5):
             ax.set_zlabel("Z_axis")
             ax.set_title("Local Orthonormal Coordinate Systems on the Unit Sphere")
             plt.show()
-            
+
 
 
 plot_sphere_with_frames(5)
-         
+
+#problem 1 part c
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+def normalize(v):
+    return v / np.linalg.norm(v)
+
+def spherical_basis_vectors(theta, phi):
+    """Compute the spherical basis vectors at a given (theta, phi)."""
+    e_r = np.array([np.sin(theta) * np.cos(phi), np.sin(theta) * np.sin(phi), np.cos(theta)])
+    e_theta = np.array([np.cos(theta) * np.cos(phi), np.cos(theta) * np.sin(phi), -np.sin(theta)])
+    e_phi = np.array([-np.sin(phi), np.cos(phi), 0])
+    return e_r, e_theta, e_phi
+
+def plot_sphere_with_spherical_basis(num_points=5):
+    fig = plt.figure(figsize=(8, 8))
+    ax = fig.add_subplot(111, projection='3d')
+    
+    # Generate a unit sphere
+    u = np.linspace(0, 2 * np.pi, 30)
+    v = np.linspace(0, np.pi, 20)
+    x = np.outer(np.cos(u), np.sin(v))
+    y = np.outer(np.sin(u), np.sin(v))
+    z = np.outer(np.ones_like(u), np.cos(v))
+    ax.plot_surface(x, y, z, color='c', alpha=0.3)
+    
+    # Select points on the sphere
+    theta_vals = np.linspace(0, np.pi, num_points)
+    phi_vals = np.linspace(0, 2 * np.pi, num_points)
+    for theta in theta_vals:
+        for phi in phi_vals:
+            point = np.array([np.sin(theta) * np.cos(phi), np.sin(theta) * np.sin(phi), np.cos(theta)])
+            e_r, e_theta, e_phi = spherical_basis_vectors(theta, phi)
+            
+            # Plot the point
+            ax.scatter(*point, color='r')
+            
+            # Plot the spherical basis vectors
+            ax.quiver(*point, *e_r * 0.2, color='b', label='$e_r$' if theta == 0 and phi == 0 else "")
+            ax.quiver(*point, *e_theta * 0.2, color='g', label='$e_\theta$' if theta == 0 and phi == 0 else "")
+            ax.quiver(*point, *e_phi * 0.2, color='r', label='$e_\phi$' if theta == 0 and phi == 0 else "")
+    
+    ax.set_xlim([-1, 1])
+    ax.set_ylim([-1, 1])
+    ax.set_zlim([-1, 1])
+    ax.set_xlabel("X-axis")
+    ax.set_ylabel("Y-axis")
+    ax.set_zlabel("Z-axis")
+    ax.set_title("Spherical Basis Vectors on the Unit Sphere")
+    plt.legend()
+    plt.show()
+
+if __name__ == "__main__":
+    plot_sphere_with_spherical_basis()
+
+    #problem 1 part d
 
 
-
-
- 
-  
