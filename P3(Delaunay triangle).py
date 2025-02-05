@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.spatial import ConvexHull, Delaunay
-
+#PART A 
 # Load the data from mesh.dat
 filename = "/Users/domholguin/Documents/mesh (1).dat"
 points = np.loadtxt(filename, skiprows=1)  
@@ -30,7 +30,9 @@ plt.ylabel("Y")
 plt.legend()
 plt.title("Convex Hull and Delaunay Triangulation")
 plt.show()
-#part b 
+
+
+#PART B
 #lift using map
 lifted_points = np.hstack((points, (points[:, 0]**2 + points[:, 1]**2).reshape(-1, 1)))
 # Compute the area change for each triangle
@@ -57,3 +59,6 @@ plt.xlabel("X")
 plt.ylabel("Y")
 plt.title("Area Ratio Heatmap (Before vs. After Lifting)")
 plt.show()
+
+#PART C
+

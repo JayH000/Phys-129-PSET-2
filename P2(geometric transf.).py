@@ -2,10 +2,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from numpy.linalg import norm
+#prob 2 part a 
 
 # Define the stereographic projection from the unit sphere to the plane (z = 0)
 def stereographic_projection(x, y, z):
-    return x / (1 - z), y / (1 - z)
+    epsilon=1e-10
+    return x / (1 - z + epsilon), y / (1 - z + epsilon)
+
 
 # Generate a mesh for the unit sphere
 theta = np.linspace(0, np.pi, 50)  # Polar angle
