@@ -42,9 +42,9 @@ def plot_surface_with_frames():
         for j in range(0, X.shape[1], 3):
             point = np.array([X[i, j], Y[i, j], Z[i, j]])
             
-            ax.quiver(*point, *t1[:, i, j] * 0.2, color='r')  # Tangent 1
-            ax.quiver(*point, *t2[:, i, j] * 0.2, color='g')  # Tangent 2
-            ax.quiver(*point, *normal[:, i, j] * 0.2, color='b')  # Normal
+            ax.quiver(*point, *t1[:, i, j] * 0.5, color='r')  # Tangent 1
+            ax.quiver(*point, *t2[:, i, j] * 0.5, color='g')  # Tangent 2
+            ax.quiver(*point, *normal[:, i, j] * 0.5, color='b')  # Normal
     
     ax.set_xlabel('X-axis')
     ax.set_ylabel('Y-axis')
