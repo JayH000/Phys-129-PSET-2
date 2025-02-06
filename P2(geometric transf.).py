@@ -95,3 +95,5 @@ ax2.set_title(f'Stereographic Projection\nAngle: {np.degrees(angle_plane):.2f}°
 ax2.legend()
 
 plt.show()
+
+#
