@@ -96,4 +96,6 @@ ax2.legend()
 
 plt.show()
 
-#
+#part b
+#After the stereographic projection the curves on the secondary plot look lik steep exponential curves. 
+
